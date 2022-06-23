@@ -44,25 +44,24 @@ namespace FinalTask
                     //  - проверить что такой файл есть  - нетю - генерить новый файл с имененм группы - есть - открыть его
                     nFileGroup = desctopDir + student.Group + ".txt";
 
-                    FileInfo fileGroup = new FileInfo(nFileGroup);
+                    var fileGroup = new FileInfo(nFileGroup);
                     if (fileGroup.Exists)
                     {
-                        using (StringWriter sw = fileGroup.AppendText())
+                        using (StreamWriter sw = fileGroup.AppendText())
                         {
-                            sw.WriteLine($"Имя: {student.Name} --- Дата рождения: {student.DateOfBirth}  -------- {student.Group}");
+                            sw.WriteLine($"Имя: {student.Name} --- Дата рождения: {student.DateOfBirth}");
                         }
                     }
                     else
                     {
-
+                        using (StreamWriter sw = fileGroup.CreateText())
+                        {
+                            sw.WriteLine($"Имя: {student.Name} --- Дата рождения: {student.DateOfBirth}");
+                        }
                     }
 
-
-                    //  записать туда построчно имя, дата рождения
-                    Console.WriteLine($"Имя: {student.Name} --- Дата рождения: {student.DateOfBirth}  -------- {student.Group}");
                 }
             }
-
 
 
             Console.ReadKey();
