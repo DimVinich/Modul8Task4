@@ -12,9 +12,8 @@ namespace FinalTask
             string nFileGroup;
 
             // запросить файл с валидацией
-            string file = @"D:\Temp\Students.dat";
             Console.WriteLine("Введите имя файла со списком студентов :");
-            //string file = Console.ReadLine();
+            string file = Console.ReadLine();
 
             if (!File.Exists(file))
             {
